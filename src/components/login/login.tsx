@@ -38,8 +38,7 @@ async function loginQueryForLinked(data: LoginType, router: any) {
     return response.json();
   })
   .then(data => {
-    console.log(data);
-    router.push('/search')
+    router.push('/linkedin/search')
   })
   .catch(error => {
     console.error('There was a problem with your fetch operation:', error);
@@ -79,7 +78,6 @@ export default function LoginComponent() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     setLoading(true)
     event.preventDefault();
-    console.log(loginData);
     if(socialMedia === "linked") {
       loginQueryForLinked(loginData, router);
     }
