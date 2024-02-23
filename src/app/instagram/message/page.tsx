@@ -8,7 +8,7 @@ import { sendMessage } from "./helper";
 import styles from "./page.module.css";
 
 export default function Home() {
-  const [username, setUsername] = useState("");
+  const [account, setAccount] = useState("");
   const [message, setMessage] = useState("");
   const [messageRequest, setMessageRequest] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -17,8 +17,8 @@ export default function Home() {
     setMessageRequest("");
     event.preventDefault();
     setLoading(true);
-    const result = await sendMessage(username, message);
-    setMessageRequest(result.message)
+    const result = await sendMessage(account, message);
+    setMessageRequest(result.message);
     setLoading(false);
   };
 
@@ -32,13 +32,13 @@ export default function Home() {
       >
         <TextField
           required
-          id="username"
-          label="Enter username"
-          name="username"
-          autoComplete="username"
+          id="account"
+          label="Enter account"
+          name="account"
+          autoComplete="account"
           autoFocus
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
+          value={account}
+          onChange={(event) => setAccount(event.target.value)}
           sx={{
             width: "30%",
             mr: 1,
@@ -60,9 +60,11 @@ export default function Home() {
           Send
         </Button>
       </Box>
-      {loading && <Loader/>}
+      {loading && <Loader />}
       {!loading && messageRequest && (
-        <p style={{color: "green", fontSize: "24px", textAlign: "center"}}>{messageRequest}</p>
+        <p style={{ color: "green", fontSize: "24px", textAlign: "center" }}>
+          {messageRequest}
+        </p>
       )}
     </main>
   );

@@ -20,7 +20,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ["Accounts"];
+const navItems = ["Accounts", "Message"];
 
 export default function InstagramNavigation(props: Props) {
   const { window } = props;
